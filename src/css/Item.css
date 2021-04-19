@@ -1,0 +1,82 @@
+/* 
+.product img{
+    border-radius: 30px 30px 0px 0px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.product{
+    background-color:#ffffff;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+.product header {
+    padding: 0px 30px 0 30px;
+}
+.form{
+    padding: 0px 30px 0 30px;
+}
+del {
+    display: block;
+    text-align: center;
+    font-size: 1em;
+}
+legend{
+    color:  #971032; 
+}
+.bottons{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #971032; 
+    border-radius: 0px 0 30px 30px;
+}
+.bottons li {
+    text-align: center;
+    list-style: none;
+}
+.bottons li i{
+  color: #ffffff;
+}
+.bottons li i:hover{
+    color: #e2e2e2;
+}
+.variation ul li{
+    display: inline-flex;
+    flex-wrap: wrap;
+    padding: 0 0px 0 10px;
+}
+.variationfilter ul li{
+    display: block;
+    flex-wrap: wrap;
+    padding: 0 10px 0 10px;
+}
+.show {
+    margin-top: 10px;
+    font-size: 0.8em;
+    margin-left: 10px;
+    display: inline-flex;
+    width: 70%;
+}
+ins{
+    color: #971032;
+    font-size: 1.5em;   
+    display: block;
+    text-align: center;
+}
+.product p{
+    
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+font-size: 0.8em;
+line-height: 1rem;
+overflow: hidden;
+height: 8.5em;
+}
+#rating{
+    color: rgb(218, 165, 32);
+}
+dt{
+    font-size: 0.8em;
+    font-weight: 900;
+}
+ */

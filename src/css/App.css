@@ -1,0 +1,263 @@
+.hearo2{
+    height: 20em;
+background-color: aquamarine;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position:  center center;
+}
+.hearo2 p{
+    text-align: left;
+    position: absolute;
+    top: 57px;
+    right: 0;
+    width: 86%;
+    color: var(--primary-on);
+}
+.hearo2 h1{
+    text-align: center;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    width: 100%;
+    color: var(--primary-on);
+}
+
+
+
+/* header */
+
+
+.page-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    background-color:  #971032;
+    color:  #971032;
+
+}
+header img {
+    width: 100%;
+    height: 15em;
+}
+
+.hearo2{
+    height: 20em;
+    /* background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url("../img/pexels-mateusz-dach-3517928.jpg"); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position:  center center;
+}
+.hearo2 p{
+    text-align: left;
+    position: absolute;
+    top: 57px;
+    right: 0;
+    width: 86%;
+    color:  #971032;
+}
+.hearo2 h1{
+    text-align: center;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    width: 100%;
+    color:  #971032;
+}
+
+.btn{
+    background-color: unset;
+    color:  #971032;
+    border: 1px solid  #971032;
+    padding: 0px 10px;
+    cursor: pointer;
+}
+.content{
+    position: relative;
+    top: 4em;
+    width: 400px;
+    height: 200px;
+}
+
+.hearo2 button{
+    text-align: center;
+    position: absolute;
+    top: 60%;
+    right: 0;
+    transform: translate(-50%, -50%);
+}
+header  a{
+    color:  #971032;
+    text-decoration: none;
+}
+
+#find {
+    width: 70%;
+    margin-top: 15px;
+    border-radius: 11px;
+    margin-left: 19px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.menu a {
+    color: white;
+    
+    text-decoration: none;
+    font-size: 17px;
+}
+/* 
+.navigation #menu{
+    display: none;
+} */
+.menu{
+    
+    position: relative;
+    display: inline-block;
+}
+
+
+.menu:hover .submenu{
+    display: contents;
+}
+
+.submenu{
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* fff */
+.filter-options{
+    display: block;
+    background-color:#000000;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0px 0px 0px;
+}
+#filter{
+    display: none;
+}
+.icon{
+    color: #000000;
+    margin-right: 14px;
+    padding-top: 18px;
+}
+.iconfilter{
+    color: #3399ff;
+    border: 1px solid;
+    padding: 3px;
+    margin-left: 20px;
+    font-size: 0.7em;
+}
+#sort {
+    width: 79%;
+    padding-left: 10px;
+    margin-left: 10px;
+}
+
+   
+
+
+.logo{
+    grid-column: 1;
+    grid-row:1;
+}
+.logo img{
+    width: 50px;
+    height: unset;
+}
+.nav-toggle{
+    grid-column: 4;
+    grid-row:1;
+}
+
+.search{
+    grid-row: 1 / span 4;
+}
+.navigation{
+    grid-row: 3 / span 4;
+    
+}
+/* Solid border */
+hr.solid {
+    border-top: 0.5px solid #bbb;
+  }
+.your-products{
+    grid-row: 1;
+    grid-column: 3;
+    margin-top: 10px;
+    position: absolute;
+top: 10px;
+right: 46px;
+}
+.filter-list{
+    display: flex;
+}
+.hedin{
+    display: none;
+}
+.rating {
+    display: block;
+    color: #ee1;
+}
+.products, .page-header, .page-footer{
+    padding: 0px;
+}
+/* .your-products{
+    display: flex;
+} */
+
+.pagination{
+    text-align: center;
+}
+.pages{
+    display: flex;
+    justify-content: center;
+}
+.pages > li{
+    margin: 4px;
+}
+
+.social, .legal{
+    display: flex;
+    justify-content: center;
+    margin-top: 5xp;
+}
+.legal li a {
+color: #000000;
+padding-left: 20px;
+}
+.copyright{
+    text-align: center;
+}
+
+
+/* footer */
+.pages li {
+    background: #e3e3e3;
+    border-radius: 11px;
+    /* width: 35px; */
+    border: 1px solid #ddd;
+    color: #fff;
+}
+.pages li a {
+
+    color: #fff;
+}
+.page-footer{
+    background-color:#971131;
+    color: #971131;
+}
+.social{
+    padding-top: 10px;
+}
+.social li i{
+    color: #241717;
+    align-items: center;
+    font-size: 30px;
+    padding-left:10px ;
+
+}
