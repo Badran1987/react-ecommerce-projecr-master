@@ -1,0 +1,36 @@
+[
+    {
+            "id":1,
+            "name": "badran Item1",
+            "img":"/src/img/1.jpeg",
+            "price":5900,
+            "color":["rgb-wc","Day-Cool","whait","Warm Light"],
+            "size":[9,10,12],
+            "disc":"Badran Smart lamps in compatible with Amazon's Alexa. It only takes a few minutes to configure them and they are immediately ready. By voice command, make them change color, intensity and turn them on and off."
+        },{
+            "id":2,
+            "name": "badran Item2",
+            "img":"/src/img/1.jpeg",
+            "price":5900,
+            "color":["rgb-wc","Day-Cool","whait","Warm Light"],
+            "size":[9,10,12],
+            "disc":"Badran Smart lamps in compatible with Amazon's Alexa. It only takes a few minutes to configure them and they are immediately ready. By voice command, make them change color, intensity and turn them on and off."
+      
+        },{
+            "id":3,
+            "name": "badran Item3",
+            "img":"/src/img/1.jpeg",
+            "price":5900,
+            "color":["rgb-wc","Day-Cool","whait","Warm Light"],
+            "size":[9,10,12],
+            "disc":"Badran Smart lamps in compatible with Amazon's Alexa. It only takes a few minutes to configure them and they are immediately ready. By voice command, make them change color, intensity and turn them on and off."
+      
+        },{"id":4,
+        "name": "badran Item3",
+        "img":"/src/img/1.jpeg",
+        "price":5900,
+        "color":["rgb-wc","Day-Cool","whait","Warm Light"],
+        "size":[9,10,12],
+        "disc":"Badran Smart lamps in compatible with Amazon's Alexa. It only takes a few minutes to configure them and they are immediately ready. By voice command, make them change color, intensity and turn them on and off."
+  }
+        ]

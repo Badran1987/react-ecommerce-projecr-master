@@ -1,5 +1,5 @@
 // import { Home } from '@material-ui/icons'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {BrowserRouter as Router , Route, Link, Switch} from 'react-router-dom'
 import ShopPage from '../components/ShopPage'
 import About from '../components/About'
@@ -8,45 +8,39 @@ import Contact from '../components/Contact'
 import Home from '../components/Home'
 import Footers from '../components/Footers'
 import Products from './Products'
+import firebase from '../util/fierbase'
 import Header from '../components/Header'
+
 import Page404 from '../components/Page404'
+
+const ProductsAr =React.createContext()
 
 
 const App = () => {
+
+const [productsAr,setProductsAr] = useState([])
+const [lodingData,setLodingData] = useState('true')
+
+useEffect ( async() =>{
+	let productData = await getAPIData(`src/util/data.json`)
+	setProductsAr (productData)
+	setLodingData (false)
+},[])
+
+
 // get data function 
-	const getDataFromDB =  () => {
-	return [
-{
-		id:1,
-		name: `badran Item1`,
-		img:`/src/img/1.jpeg`,
-		price:100,
-		color:[`rgb-wc`,`Day-Cool`,`whait`,`Warm Light`],
-		size:[`9`,`10`,`12`],
-		disc:`Badran Smart lamps in compatible with Amazon's Alexa. It only takes a few minutes to configure them and they are immediately ready. By voice command, make them change color, intensity and turn them on and off.`
-	},{
-		id:2,
-		name: `badran Item2`,
-		img:`/src/img/2.jpeg`,
-		price:200,
-		color:[`whait`,`Warm Light`],
-		size:[`9`,`10`],
-		disc:`Smart lamps in compatible with Amazon's Alexa. It only takes a few minutes to configure them and they are immediately ready. By voice command, make them change color, intensity and turn them on and off.`
 
-	},{
-		id:3,
-		name: `badran Item 3`,
-		img:`/src/img/3.jpeg`,
-		price: 300,
-		color:[`rgb-wc`,`whait`,`Warm Light`],
-		size:[`9`,`12`],
-		disc:`Smart lamps in compatible with Amazon's Alexa. It only takes a few minutes to configure them and they are immediately ready. By voice command, make them change color, intensity and turn them on and off.`
-
-	}
-	]
+const getAPIData = async (url) =>{
+	setLodingData(true)
+	let response = await fetch(url)
+	return await response.json()
+	
+	
 }
-	const productsAr = getDataFromDB();
 
+const UpdateDataViewResult = (data) =>{
+		console.log("DD",data)
+	}
 
 
 	const Styling = {
@@ -252,29 +246,38 @@ const App = () => {
 	
 	
 	return (
-		<Router>
+		<>
+			{
+				(lodingData) ?
+				<h1>Loding Data</h1>
+			:
+			<Router>
 
-		<Header />
-		
-		<div>
-			<h1>10W Smart Bulb WiFi</h1>
-			<p>Now 2-Packs for <span>$39</span></p>
-			<button >Buy Now</button>
-		</div>
+			<Header />
 			
+			<div>
+				<h1>10W Smart Bulb WiFi</h1>
+				<p>Now 2-Packs for <span>$39</span></p>
+				<button >Buy Now</button> 
+			</div>
 				
-			<Switch>
-				<Route exact path="/" component= {Home}></Route>
-				<Route path="/about" component={About}></Route>
-				<Route path="/contact" component={Contact}></Route>
-				<Route path="/shop" ><ShopPage ProductsItem={productsAr} /></Route>
-				<Route path="/details/:prodId"><ProductDetails ProductsItem={productsAr} /> </Route>
-				<Route path="*" component={Page404} />
-			</Switch>
-
-	<Footers />
-	</Router>
+				<ProductsAr.Provider value = {{productsAr:productsAr , onUpdateDataViewResult:UpdateDataViewResult}}>		
+					<Switch>
+						<Route exact path="/" component= {Home}></Route>
+						<Route path="/about" component={About}></Route>
+						<Route path="/contact" component={Contact}></Route>
+						<Route path="/shop" ><ShopPage /></Route>
+						<Route path="/details/:prodId"><ProductDetails ProductsItem={productsAr} /> </Route>
+						<Route path="*" component={Page404} />
+					</Switch>
+				</ProductsAr.Provider>
+			<Footers />
+			</Router>
+			}
+		</>
 	)
 }
 
-export default App
+
+
+export {App,ProductsAr } 

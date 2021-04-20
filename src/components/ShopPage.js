@@ -13,7 +13,7 @@ const ShopPage = ({ProductsItem})=>{
             <h1>MTMTech Smart Bulbs </h1>
         </header>
         <Filter />
-        <Products ProductsItem={ProductsItem}></Products>
+        <Products ></Products>
         {/* <Products Products = {Products}/> */}
         </main>
     

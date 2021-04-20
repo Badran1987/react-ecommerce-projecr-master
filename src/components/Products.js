@@ -1,13 +1,17 @@
-import React from 'react'
+import React, {useContext}from 'react'
 import { Pagination } from 'antd';
 import Item from './Item'
 import 'antd/dist/antd.css';
 import '../css/Products.css'
+import {ProductsAr} from '../components/App'
 
-const Products = ({ProductsItem}) => {
+const Products = () => {
 
+
+  
+  const ProductsItem = useContext(ProductsAr).productsAr
     const allProducts = ProductsItem.map((prod) => <Item key={prod.id} data={prod}/>)
-
+    console.log(allProducts)
 
     return (
   <>

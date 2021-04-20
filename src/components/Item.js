@@ -10,7 +10,7 @@ function onChange(checkedValues) {
   }
 
 const Item = ({data}) => {
-    console.log(data)
+    
 
     const {id, name , price , img, disc, color,size} = data
 

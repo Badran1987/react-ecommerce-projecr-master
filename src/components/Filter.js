@@ -1,8 +1,57 @@
-import React from 'react';
-import {Rate} from 'antd';
+import React,{useContext, useEffect, useState} from 'react';
+import {Rate , Select } from 'antd';
 import styled from 'styled-components';
+import {ProductsAr} from '../components/App'
 
 const Filter = ()=>{
+    const { Option } = Select;
+    const ProductsItem = useContext(ProductsAr).productsAr
+    const onUpdateDataViewResult = useContext(ProductsAr).onUpdateDataViewResult
+
+    
+
+     const resultSet = ProductsItem.map((s) => `${s.price}, ${s.id}`)
+     ProductsItem.sort((a,b) => {
+        return a.price-b.price
+    })
+
+    const [value, setValue] = useState(``)
+    const [isAsc, setAsc] = useState(true)
+    const [results, setResults] = useState([])
+
+    // hook sideeffect when render new query
+    useEffect(() =>{
+        
+        if (value.key === 'isAsc'){
+         
+            resultSet.sort((a,b) => {
+                return a.price-b.price
+            })
+           
+            onUpdateDataViewResult(results)
+      
+
+        }else{
+            resultSet.sort((a,b) => {
+                return b.price - a.price
+            })
+           
+            onUpdateDataViewResult(results)
+    
+        }
+        setResults(resultSet)
+       
+    },[isAsc])
+
+    const handleChange =(event) => {
+        setValue(event)
+        setAsc(!isAsc)
+      
+      }
+    
+
+   
+
 const Fieldset = styled.fieldset`
 display:flex;
 background-color:#e2e2e2
@@ -52,11 +101,12 @@ background-color:#e2e2e2
         </div>
         <fieldset class="show">
         <label for="sort">Show</label>
-        <select name="sort" id="sort">
-            <option value="price-high">Price, highest to lowest</option>
-            <option value="price-low">Price, lowest to highest</option>
-            <option value="newest">Newest releases</option>
-        </select>
+        <Select labelInValue defaultValue={{ value: 'highest' }} style={{ width: 120 }} onChange={handleChange}>
+    <Option value='isAsc'>Price, highest to lowest</Option>
+    <Option value='isDsc'>Price, lowest to highest</Option>
+
+  </Select>
+        
         </fieldset>
   </form>
      )
