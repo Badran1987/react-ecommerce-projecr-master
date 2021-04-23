@@ -16,10 +16,8 @@ body {
     font-size: 1rem;
     line-height: 2rem;
 	color: #3f4a49;
-	/* background: linear-gradient(0deg, rgb(245, 245, 245) 0%, rgb(255, 254, 254) 100%, rgba(255,255,255,1) 100%); } */
 
 }
-/* Preview each of these suggested resets before beginning your project styling */
 
 img {
 	max-width: 100%;
@@ -52,7 +50,6 @@ legend {
 	border: none;
 } 
 
-/* These will make "User agent stylesheet" values (Chrome) available when needed, using classes */
 ul.ul {
 	list-style-type: disc;
 }
@@ -77,7 +74,6 @@ fieldset.fieldset {
 	min-inline-size: min-content;
 	border-width: 0.125em;
 	border-style: groove;
-	/* border-color: threedface; */
 	border-image: initial;
 }
 legend.legend {

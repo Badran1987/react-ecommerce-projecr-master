@@ -1,0 +1,15 @@
+
+.filter-list{
+    display: inline-block;
+
+}
+
+.filter-options{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.filter-list.rating {
+    display: inline list-item;
+    margin-left: 30px;
+    width: 50% !important;
+}

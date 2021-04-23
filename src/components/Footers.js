@@ -1,10 +1,11 @@
-
 import React from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
 
 
+
+
 const Footers = ()=>{
-    const { Header, Content, Footer } = Layout;
+const { Header, Content, Footer } = Layout;
     return(
     
      <>

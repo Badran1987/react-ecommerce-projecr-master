@@ -1,116 +1,133 @@
 import React,{useContext, useEffect, useState} from 'react';
-import {Rate , Select } from 'antd';
 import styled from 'styled-components';
-import {ProductsAr} from '../components/App'
+import {ProductsAr} from 'components/App'
+import {sortProducts,sortAsc,sortDsc,sortNews} from 'hooks/sortProducts'
+import {filterProducts,rgb} from 'hooks/filterProduct'
+import {ShopPage,FilterAr} from 'pages/ShopPage'
+import ColorFilter from 'components/ColorFilter'
+import WattFilter from 'components/WattFilter'
+import {Rate , Select,Row, Col, Divider ,Radio, Layout, Menu, Input, Space, Breadcrumb } from 'antd';
 
-const Filter = ()=>{
-    const { Option } = Select;
-    const ProductsItem = useContext(ProductsAr).productsAr
-    const onUpdateDataViewResult = useContext(ProductsAr).onUpdateDataViewResult
+import { AudioOutlined } from '@ant-design/icons';
+const Filter = ({allProducts,setProductResult,filters,setFiltersResult})=>{
 
+    const { Header, Content, Footer } = Layout;
+    const { Search } = Input;
     
+        const suffix = (
+        <>
+            <AudioOutlined
+            style={{
+                fontSize: 16,
+                color: '#1890ff',
+            }}
+            />
 
-     const resultSet = ProductsItem.map((s) => `${s.price}, ${s.id}`)
-     ProductsItem.sort((a,b) => {
-        return a.price-b.price
-    })
+        </>
+        );
+    const onSearch = value => console.log(value);
 
-    const [value, setValue] = useState(``)
-    const [isAsc, setAsc] = useState(true)
-    const [results, setResults] = useState([])
 
-    // hook sideeffect when render new query
-    useEffect(() =>{
-        
-        if (value.key === 'isAsc'){
-         
-            resultSet.sort((a,b) => {
-                return a.price-b.price
-            })
-           
-            onUpdateDataViewResult(results)
-      
-
-        }else{
-            resultSet.sort((a,b) => {
-                return b.price - a.price
-            })
-           
-            onUpdateDataViewResult(results)
-    
-        }
-        setResults(resultSet)
-       
-    },[isAsc])
-
-    const handleChange =(event) => {
-        setValue(event)
-        setAsc(!isAsc)
-      
+    const handleRatingChange = (event)=>{
+        setFiltersResult({
+          ...filters,
+          rating: event.target.value
+        })
       }
     
-
-   
+    const { Option } = Select;
 
 const Fieldset = styled.fieldset`
-display:flex;
-background-color:#e2e2e2
+margin-left: 30px;
 }
 `
 
-
-
+const handleChange =(event) => {
+   
+    if (event.key === 'isDsc'){
+        setProductResult(sortProducts(allProducts,sortAsc))
+    }else if (event.key === 'isAsc'){
+        setProductResult( sortProducts(allProducts,sortDsc))
+    } else{
+        console.log("badran 0")
+    }
+  
+  }
+ 
     return(
 
-        <form class="filters">
-        <a href="javascript:void(0);" class="iconfilter" onclick="myFilterFunction()" >
-        <i class="fa fa-filter">Filter</i>
-        </a>
-        <div class="filter-options variationfilter" id="filter">
-        <Fieldset>
-            <legend>Shape</legend>
-            <ul class="filter-list" >
-            <li><input type="checkbox" name="colour" value="RGB-WC" id="RGB-WC"/> <label for="RGB-WC">RGB-WC</label></li>
-            <li><input type="checkbox" name="colour" value="white" id="white"/> <label for="white">White</label></li>
-            <li><input type="checkbox" name="colour" value="worm" id="worm"/> <label for="worm">worm</label></li>
-            <li><input type="checkbox" name="colour" value="Day-cool" id="Day-cool"/> <label for="Day-cool">Day-cool</label></li>
-            </ul>
-        </Fieldset>
-        <hr class="solid" />
-        <fieldset>
-            <legend>Watt</legend>
-            <ul class="filter-list">
-            <li><input type="checkbox" name="size" value="xs" id="xs" /> <label for="xs">7 W</label></li>
-            <li><input type="checkbox" name="size" value="sm" id="sm"/> <label for="sm">9 W</label></li>
-            <li><input type="checkbox" name="size" value="md" id="md"/> <label for="md">10 W</label></li>
-            <li><input type="checkbox" name="size" value="lg" id="lg"/> <label for="lg">12 W</label></li>
-            </ul>
-        </fieldset>
-        <hr class="solid" />
-        <fieldset>
-            <legend>Ratings (above)</legend>
+<>
 
-            <ul style={{ width: '100%' }} className="filter-list rating">
-            <Rate  disabled defaultValue={5} />
-            <Rate  disabled defaultValue={4} />
-            <Rate disabled defaultValue={3} />
-            <Rate  disabled defaultValue={2} />
-            <Rate  disabled defaultValue={1} />
-            </ul>
-        </fieldset>
-        </div>
-        <fieldset class="show">
-        <label for="sort">Show</label>
-        <Select labelInValue defaultValue={{ value: 'highest' }} style={{ width: 120 }} onChange={handleChange}>
-    <Option value='isAsc'>Price, highest to lowest</Option>
-    <Option value='isDsc'>Price, lowest to highest</Option>
+        <Divider orientation="left">Filter</Divider>
+        <Row>
+      <Col span={24}>
+      <Space direction="vertical" style={{ width: '100%' }}>
+                    <Search   placeholder="input search text"
+                    enterButton="Search"
+                    size="large"
+                    suffix={suffix}
+                    onSearch={onSearch} 
+                    type="search" 
+                    value={filters.query} onChange={(event)=>{
+                            setFiltersResult({
+                                ...filters,
+                                query: event.target.value
+                            })
+                            }} />
+                </Space>
+                <div className="site-layout-background" style={{ float:'right', paddingTop: 80 }}>
+                
+                </div>
+           
 
-  </Select>
+      </Col>
+    </Row>
+        <Row>
+          <Col span={6} xs={{ order: 1 }} sm={{ order: 1 }} md={{ order: 1 }} lg={{ order: 1 }}>
+          <ColorFilter handleFilters = {filters => handleFilters(filters,"items") } />
+          </Col>
+          <Col span={6} xs={{ order: 1 }} sm={{ order: 1 }} md={{ order: 1 }} lg={{ order: 1 }}>
+          <WattFilter />
+          </Col>
+          <Col span={12} xs={{ order: 1 }} sm={{ order: 1 }} md={{ order: 1 }} lg={{ order: 1 }}>
+          <Fieldset>
+                <ul style={{ width: '100%' }} className="filter-list rating">
+                <Input type="radio" name="rating" value="all" id="aboveZero" onChange={handleRatingChange} checked={(filters.rating === `all`) ? true : false} />
+                <Rate onChange={handleRatingChange} disabled defaultValue={1} /> (8)
+                <Input type="radio" name="rating" value="1" id="aboveOne" onChange={handleRatingChange} />
+                <Rate  disabled defaultValue={2} /> (22)
+                <Input type="radio" name="rating" value="2" id="aboveTwo" onChange={handleRatingChange} />
+                <Rate disabled defaultValue={3} /> (1)
+                <Input type="radio" name="rating" value="3" id="aboveThree" onChange={handleRatingChange} /> 
+                <Rate  disabled defaultValue={4} />(44)
+                <Input type="radio" name="rating" value="4" id="aboveFour" onChange={handleRatingChange} />
+                <Rate  disabled defaultValue={5} />(133)
+                </ul>
+            </Fieldset>
+          </Col>
+          
+        </Row>
+        <Divider orientation="left">Show</Divider>
+        <Row>
+      <Col flex={2}>
+
+                  
+        <Select labelInValue defaultValue={{ value: '0' }} style={{ width: 120 }} onChange={handleChange} >
+ 
+ <Option value='0' disabled selected>--Sort By --</Option>
+ <Option value='isDsc'>Price, highest to lowest</Option>
+ <Option value='isAsc'>Price, lowest to highest</Option>
+
+</Select>
+      </Col>
+    
+    </Row>
+
+
         
-        </fieldset>
-  </form>
-     )
+       
+    </>     )
 
 }
 
-export default Filter
+export  {Filter,FilterAr}
