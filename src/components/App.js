@@ -61,14 +61,10 @@ const UpdateDataViewResult = (data) =>{
 		 {	<BrowserRouter>
 			<Layout className="layout">
 
-				<Headers />
+				
 			
 				<Content style={{ padding: '0 50px' }}>
-				<Breadcrumb style={{ margin: '16px 0' }}>
-					<Breadcrumb.Item>Home</Breadcrumb.Item>
-					<Breadcrumb.Item>List</Breadcrumb.Item>
-					<Breadcrumb.Item>App</Breadcrumb.Item>
-				</Breadcrumb>
+				
 				<div className="site-layout-content">
 					{
 				
@@ -76,7 +72,12 @@ const UpdateDataViewResult = (data) =>{
 							<h1>Loding Data</h1>
 						:
 						<Router>
-
+							<Headers />
+							<Breadcrumb style={{ margin: '16px 0' }}>
+								<Breadcrumb.Item>Home</Breadcrumb.Item>
+								<Breadcrumb.Item>List</Breadcrumb.Item>
+								<Breadcrumb.Item>App</Breadcrumb.Item>
+							</Breadcrumb>
 						{/*  */}
 							
 							<ProductsAr.Provider value = {{productsAr:productsAr , onUpdateDataViewResult:UpdateDataViewResult}}>
